@@ -6,10 +6,6 @@ h1{
 	color: white;
 }
 
-span{
-	color: white;
-}
-
 .box{
 	background: blue;
 	float: left;
@@ -21,4 +17,11 @@ span{
 #grouper{
 	margin: 0 auto;
 	max-width: 800px;
+}
+
+#line{
+	background: white;
+	height:30px;
+	text-align: center;
+	color: black;
 }
