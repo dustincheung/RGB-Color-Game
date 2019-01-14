@@ -63,6 +63,7 @@ button{
 	transition: all 1.00s;
 	-moz-transition: all 1.00s;
 	-webkit-transition: all 1.00s;
+	outline: none;
 }
 
 button:hover{

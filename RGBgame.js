@@ -92,7 +92,12 @@ restartButt.addEventListener("click", function(){
 	}
 
 	//reset h1 background
-	h1.style.backgroundColor = "steelblue"
+	h1.style.backgroundColor = "steelblue";
+
+	//reset prompt
+	promptDisplay.textContent = "";
+
+	restartButt.textContent = "New Colors";
 
 })
 
