@@ -6,6 +6,10 @@ h1{
 	color: white;
 }
 
+span{
+	color: white;
+}
+
 .box{
 	background: blue;
 	float: left;

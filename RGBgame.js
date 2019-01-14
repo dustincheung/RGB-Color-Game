@@ -1,15 +1,19 @@
-var colorArray = [
-	"rgb(255, 0, 0)",
-	"rgb(255, 255, 0)",
-	"rgb(0, 255, 0)",
-	"rgb(0, 255, 255)",
-	"rgb(0, 0, 255)",
-	"rgb(255, 0, 255)"
-]
-
+var correctColor = pickColor();
+var colorArray = genRandomColors();
 var boxes = document.querySelectorAll(".box");
-var correctColor = colorArray[3];
 var colorDisplay = document.getElementById("colorDisplay");
+var promptDisplay = document.getElementById("prompt");
+
+function pickColor(){
+	var randNum = Math.floor(Math.random() * colorArray.length);
+	return colorArray[randNum];
+}
+
+function correctedColor(color){
+	for(var i = 0; boxes.length; i++){
+		boxes[i].style.backgroundColor = color;
+	}
+}
 
 colorDisplay.textContent = correctColor;
 
@@ -20,9 +24,11 @@ for(var i = 0; i < boxes.length; i++){
 		var selectColor = this.style.backgroundColor;
 
 		if(selectColor === correctColor){
-			alert("correct");
+			promptDisplay.textContent = "Correct!";
+			correctedColor(correctColor);
 		}else{
-			alert("wrong")
+			promptDisplay.textContent = "Try Again!";
+			this.style.backgroundColor = "#232323";
 		}
 	})
 }
