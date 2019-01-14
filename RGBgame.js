@@ -1,11 +1,14 @@
 //linking javascript to html elements and initializing game
-var colorArray = genRandomColors(6);
+var numBoxes = 6;
+var colorArray = genRandomColors(numBoxes);
 var correctColor = pickColor();
 var boxes = document.querySelectorAll(".box");
 var colorDisplay = document.getElementById("colorDisplay");
 var promptDisplay = document.getElementById("prompt");
 var h1 = document.querySelector("h1");
 var restartButt = document.getElementById("restart");
+var easyButt = document.querySelector("#easyButt");
+var hardButt = document.querySelector("#hardButt");
 
 //returns array of num size initialized with random rgb strings
 function genRandomColors(num){
@@ -36,10 +39,46 @@ function correctedColor(color){
 	}
 }
 
+//alters shading of selected buttons
+easyButt.addEventListener("click",function(){
+	easyButt.classList.add("selected");
+	hardButt.classList.remove("selected");
+
+	//initializing for easy mode
+	numBoxes = 3;
+	colorArray = genRandomColors(numBoxes);
+	correctColor = pickColor();
+	colorDisplay.textContent = correctColor;
+
+	for(var i = 0; i < boxes.length; i++){
+		if(colorArray[i]){
+			boxes[i].style.backgroundColor = colorArray[i];
+		}else{
+			boxes[i].style.display = "none";
+		}
+	}
+})
+
+hardButt.addEventListener("click",function(){
+	hardButt.classList.add("selected");
+	easyButt.classList.remove("selected");
+
+	//initializing for hard mode
+	numBoxes = 6;
+	colorArray = genRandomColors(numBoxes);
+	correctColor = pickColor();
+	colorDisplay.textContent = correctColor;
+
+	for(var i = 0; i < boxes.length; i++){
+		boxes[i].style.backgroundColor = colorArray[i];
+		boxes[i].style.display = "block";
+	}
+})
+
 //button to restart game where variables are initialzied to new values
 restartButt.addEventListener("click", function(){
 	//generating new colors
-	colorArray = genRandomColors(6);
+	colorArray = genRandomColors(numBoxes);
 
 	//setting new correct color
 	correctColor = pickColor();
@@ -53,7 +92,7 @@ restartButt.addEventListener("click", function(){
 	}
 
 	//reset h1 background
-	h1.style.backgroundColor = "#232323"
+	h1.style.backgroundColor = "steelblue"
 
 })
 
