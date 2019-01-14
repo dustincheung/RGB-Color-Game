@@ -1,3 +1,4 @@
+//linking javascript to html elements and initializing game
 var colorArray = genRandomColors(6);
 var correctColor = pickColor();
 var boxes = document.querySelectorAll(".box");
@@ -6,6 +7,7 @@ var promptDisplay = document.getElementById("prompt");
 var h1 = document.querySelector("h1");
 var restartButt = document.getElementById("restart");
 
+//returns array of num size initialized with random rgb strings
 function genRandomColors(num){
 	var tempArray = []
 
@@ -21,17 +23,20 @@ function genRandomColors(num){
 	return tempArray;
 }
 
+//selects a random target color from the color array
 function pickColor(){
 	var randNum = Math.floor(Math.random() * colorArray.length);
 	return colorArray[randNum];
 }
 
+//updates all boxes to the target color when the correct box is selected
 function correctedColor(color){
 	for(var i = 0; boxes.length; i++){
 		boxes[i].style.backgroundColor = color;
 	}
 }
 
+//button to restart game where variables are initialzied to new values
 restartButt.addEventListener("click", function(){
 	//generating new colors
 	colorArray = genRandomColors(6);
@@ -52,8 +57,10 @@ restartButt.addEventListener("click", function(){
 
 })
 
+//color display is set to target color
 colorDisplay.textContent = correctColor;
 
+//sets box colors to rgb strings in array and handles selection logic
 for(var i = 0; i < boxes.length; i++){
 	boxes[i].style.backgroundColor = colorArray[i];
 
